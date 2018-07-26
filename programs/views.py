@@ -3,4 +3,5 @@ from .models import Program
 
 # Create your views here.
 def home(request):
-    return render(request, 'programs/home.html')
+    programs = Program.objects
+    return render(request, 'programs/home.html', {'programs':programs})

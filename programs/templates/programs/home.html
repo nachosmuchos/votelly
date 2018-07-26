@@ -1,1 +1,16 @@
-Hello there!
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% for program in programs.all %}
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ program.name }}</h5>
+    <p class="card-text">{{ program.description }}</p>
+    <a href="#" class="btn btn-primary">Vote</a>
+  </div>
+</div>
+
+{% endfor %}
+{% endblock %}
