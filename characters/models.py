@@ -8,4 +8,4 @@ class Character(models.Model):
     related_program = models.ForeignKey(Program, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
-        return self.name
+        return self.name[:100]

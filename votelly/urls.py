@@ -16,10 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from programs import views
+from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('characters/', include('characters.urls')),
-    path('comments/', include('comments.urls')),
+    url(r'^program/(?P<fk>[0-9]+)/$', views.program_characters, name="program_characters"),
 ]

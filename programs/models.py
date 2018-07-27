@@ -6,4 +6,4 @@ class Program(models.Model):
     description = models.TextField(default='Desctiption')
 
     def __str__(self):
-        return self.name
+        return self.name[:100]

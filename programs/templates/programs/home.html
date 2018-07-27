@@ -10,7 +10,7 @@
     <p class="card-text">{{ program.description }}</p>
   </div>
   <div class="card-footer text-muted">
-    <a href="#" class="btn btn-primary">Vote</a>
+    <a href="{% url 'program_characters' program.id %}" class="btn btn-primary">Vote</a>
   </div>
 </div>
 {% endfor %}

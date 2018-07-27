@@ -8,4 +8,4 @@ class Comment(models.Model):
     related_program = models.ForeignKey(Character, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
-        return self.comment
+        return self.comment_text[:100]
