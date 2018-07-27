@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for character in characters.all %}
+  {{ character.name }}
+  <br>
+  {{ character.number_of_votes }}
+{% endfor %}
+
+{% endblock %}

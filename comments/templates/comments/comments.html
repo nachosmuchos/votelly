@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for comment in comments.all %}
+  {{ comment.comment_text }}
+  <br>
+  {{ comment.comment_time }}
+{% endfor %}
+
+{% endblock %}
