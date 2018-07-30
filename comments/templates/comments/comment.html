@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div class="list-group">
 {% for comment in comments.all %}
-  {{ comment.comment_text }}
-  <br>
-  {{ comment.comment_time }}
-  <br>
+
+<div class="d-flex w-100 justify-content-between">
+  <h5 class="mb-1">{{ comment.comment_text }}
+  <small>{{ comment.comment_time }}
+</div>
 {% endfor %}
+</div>
 
 {% endblock %}
