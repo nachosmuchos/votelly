@@ -5,7 +5,7 @@ from characters.models import Character
 class Comment(models.Model):
     comment_text = models.CharField(max_length=250)
     comment_time = models.DateTimeField()
-    related_program = models.ForeignKey(Character, on_delete=models.CASCADE, default=1)
+    related_character = models.ForeignKey(Character, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.comment_text[:100]

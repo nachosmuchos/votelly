@@ -22,4 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     url(r'^program/(?P<fk>[0-9]+)/$', views.program_characters, name="program_characters"),
+    path('comments/', include('comments.urls')),
+    path('characters/', include('characters.urls')),
 ]
