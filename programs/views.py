@@ -9,4 +9,6 @@ def home(request):
 
 def program_characters(request, fk):
     characters = Character.objects.filter(related_program_id = fk)
-    return render(request, 'characters/vote.html', {'characters':characters})
+    program = Program.objects.filter(id = fk)
+#    import pdb; pdb.set_trace()
+    return render(request, 'characters/vote.html', {'characters':characters, 'program':program})
