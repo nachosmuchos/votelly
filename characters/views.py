@@ -5,9 +5,9 @@ from django.utils import timezone
 from programs.models import Program
 
 # Create your views here.
-def show_characters(request):
-    characters = Character.objects
-    return render(request, 'characters/vote.html', {'characters':characters})
+# def show_characters(request):
+#    characters = Character.objects.all()
+#    return render(request, 'characters/vote.html', {'characters':characters})
 
 def character_comments(request, fk):
     comments = Comment.objects.filter(related_character_id = fk)

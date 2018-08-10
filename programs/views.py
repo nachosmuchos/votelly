@@ -10,5 +10,12 @@ def home(request):
 def program_characters(request, fk):
     characters = Character.objects.filter(related_program_id = fk)
     program = Program.objects.filter(id = fk)
+    total_votes = total_character_votes(characters)
 #    import pdb; pdb.set_trace()
-    return render(request, 'characters/vote.html', {'characters':characters, 'program':program})
+    return render(request, 'characters/vote.html', {'characters':characters, 'program':program, 'total_votes':total_votes})
+
+def total_character_votes(chars):
+    total = 0
+    for character in chars:
+        total = total + character.number_of_votes
+    return(total)
