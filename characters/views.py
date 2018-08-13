@@ -11,8 +11,10 @@ from programs.models import Program
 
 def character_comments(request, fk):
     comments = Comment.objects.filter(related_character_id = fk)
-    program = Program.objects.filter(id = fk)
-    return render(request, 'comments/comment.html', {'comments':comments, 'program':program})
+    program = Character.objects.filter(id=fk).first().related_program
+    template_path = 'comments/comment.html'
+    context_dictionary = {'comments':comments, 'program':program}
+    return render(request, template_path, context_dictionary)
 
 def post_comment(request, fk):
      if request.method == 'POST':
@@ -25,4 +27,6 @@ def post_comment(request, fk):
          character.number_of_votes += 1
          character.save()
          comments = Comment.objects.filter(related_character_id = fk)
-         return render(request, 'comments/comment.html', {'comments':comments})
+         template_path = 'comments/comment.html'
+         context_dictionary = {'comments':comments}
+         return render(request, template_path, context_dictionary)
