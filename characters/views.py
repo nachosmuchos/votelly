@@ -11,9 +11,10 @@ from programs.models import Program
 
 def character_comments(request, fk):
     comments = Comment.objects.filter(related_character_id = fk)
-    program = Character.objects.filter(id=fk).first().related_program
+    character = Character.objects.filter(id=fk).first()
+    program = character.related_program
     template_path = 'comments/comment.html'
-    context_dictionary = {'comments':comments, 'program':program}
+    context_dictionary = {'comments':comments, 'program':program, 'character':character}
     return render(request, template_path, context_dictionary)
 
 def post_comment(request, fk):
