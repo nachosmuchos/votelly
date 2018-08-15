@@ -1,17 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>{{ program.name }}</h1>
-<h5>{{ character.name }}</h5>
+<div class="container">
 
-<div class="list-group">
+<div class="col-lg-9">
+
+  <div class="card mt-4">
+    <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+    <div class="card-body">
+      <h3 class="card-title">{{ program.name }}</h3>
+      <p class="card-text">{{ character.name }}</p>
+    </div>
+  </div>
+
+<div class="card card-outline-secondary my-4">
+  <div class="card-header">
+    Comments
+  </div>
+<div class="card-body">
+
 {% for comment in comments.all %}
 
-<div class="d-flex w-100 justify-content-between">
-  <h5 class="mb-1">{{ comment.comment_text }}
-  <small>{{ comment.comment_time }}
-</div>
+  <p>{{ comment.comment_text }}</p>
+  <small class="text-muted">{{ comment.comment_time }}</small>
+  <hr>
+
 {% endfor %}
+</div>
+</div>
+</div>
 </div>
 
 {% endblock %}

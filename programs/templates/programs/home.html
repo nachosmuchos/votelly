@@ -1,20 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="card-deck">
+    <!-- Page Content -->
+    <div class="container">
 
-{% for program in programs.all %}
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">{{ program.name }}</h5>
-    <p class="card-text">{{ program.description }}</p>
-  </div>
-  <div class="card-footer text-muted">
-    <a href="{% url 'program_characters' program.id %}" class="btn btn-primary">Vote</a>
-  </div>
-</div>
-{% endfor %}
+      <!-- Page Heading -->
+      <h1 class="my-4">Page Heading
+        <small>Secondary Text</small>
+      </h1>
 
-</div>
+      <div class="row">
+        {% for program in programs.all %}
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="{% url 'program_characters' program.id %}">{{ program.name }}</a>
+              </h4>
+              <p class="card-text">{{ program.description }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
 
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
 {% endblock %}
