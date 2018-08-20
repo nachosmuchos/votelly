@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from programs import views
 from django.conf.urls import url
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +26,4 @@ urlpatterns = [
     url(r'^program/(?P<fk>[0-9]+)/$', views.program_characters, name="program_characters"),
     path('comments/', include('comments.urls')),
     path('characters/', include('characters.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
