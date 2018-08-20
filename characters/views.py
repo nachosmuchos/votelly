@@ -21,6 +21,7 @@ def post_comment(request, fk):
      if request.method == 'POST':
          comment = Comment()
          character = Character.objects.get(pk=fk)
+         program = character.related_program
          comment.comment_text = request.POST['comment_text']
          comment.comment_time = timezone.datetime.now()
          comment.related_character = character
@@ -29,5 +30,5 @@ def post_comment(request, fk):
          character.save()
          comments = Comment.objects.filter(related_character_id = fk)
          template_path = 'comments/comment.html'
-         context_dictionary = {'comments':comments}
+         context_dictionary = {'comments':comments, 'program':program}
          return render(request, template_path, context_dictionary)
