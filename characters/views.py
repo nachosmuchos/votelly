@@ -10,7 +10,7 @@ from programs.models import Program
 #    return render(request, 'characters/vote.html', {'characters':characters})
 
 def character_comments(request, fk):
-    comments = Comment.objects.filter(related_character_id = fk).order_by('-comment_time')
+    comments = Comment.objects.filter(related_character_id = fk).order_by('-comment_time')[0:20]
     character = Character.objects.filter(id=fk).first()
     program = character.related_program
     template_path = 'comments/comment.html'
