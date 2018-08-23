@@ -8,7 +8,7 @@ def home(request):
     return render(request, 'programs/home.html', {'programs':programs})
 
 def program_characters(request, fk):
-    characters = Character.objects.filter(related_program_id = fk)
+    characters = Character.objects.filter(related_program_id = fk).order_by('-number_of_votes')
     program = Program.objects.filter(id = fk)
     total_votes = total_character_votes(characters)
 #    import pdb; pdb.set_trace()
