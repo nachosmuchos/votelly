@@ -3,11 +3,7 @@ from characters.models import Character
 from comments.models import Comment
 from django.utils import timezone
 from programs.models import Program
-
-# Create your views here.
-# def show_characters(request):
-#    characters = Character.objects.all()
-#    return render(request, 'characters/vote.html', {'characters':characters})
+from ago import human
 
 def character_comments(request, fk):
     comments = Comment.objects.filter(related_character_id = fk).order_by('-comment_time')[0:20]
@@ -28,7 +24,7 @@ def post_comment(request, fk):
          comment.save()
          character.number_of_votes += 1
          character.save()
-         comments = Comment.objects.filter(related_character_id = fk)
+         comments = Comment.objects.filter(related_character_id = fk).order_by('-comment_time')[0:20]
          template_path = 'comments/comment.html'
          context_dictionary = {'comments':comments, 'program':program}
          return render(request, template_path, context_dictionary)
