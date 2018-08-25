@@ -19,3 +19,6 @@ def total_character_votes(chars):
     for character in chars:
         total = total + character.number_of_votes
     return(total)
+
+def disclaimer(request):
+    return render(request, 'programs/disclaimer.html')
