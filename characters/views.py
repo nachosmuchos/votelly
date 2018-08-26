@@ -15,7 +15,7 @@ def character_comments(request, fk):
     context_dictionary = {'comments':comments, 'program':program, 'character':character, 'characters':characters, 'total_votes':total_votes}
     return render(request, template_path, context_dictionary)
 
-def post_comment(request, fk):
+def vote_character(request, fk):
      if request.method == 'POST':
 #         comment = Comment()
          character = Character.objects.get(pk=fk)

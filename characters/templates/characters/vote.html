@@ -39,7 +39,7 @@
       <img class="rounded-circle img-fluid d-block mx-auto" src="{{ character.character_photo.url }}" alt="">
       <h3><a href="{% url 'characters:character_comments' character.id %}">{{ character.name }}</h3></a>
           <p>{{ character.description }}</p>
-          <form method="POST" action="{% url 'characters:post_comment' character.id %}">
+          <form method="POST" action="{% url 'characters:vote_character' character.id %}">
             {% csrf_token %}
             <th><input class="btn btn-primary" type="submit" value="Äänestä"></th>
           </form>
