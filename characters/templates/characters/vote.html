@@ -19,7 +19,7 @@
   <tbody>
       <tr>
         <th><a href="{% url 'characters:character_comments' character.id %}">{{ character.name }}</th></a>
-        <th><div class="progress-bar progress-bar bg-alert" role="progressbar" style="width: {% widthratio character.number_of_votes total_votes 100 %}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ character.number_of_votes }}</div></th>
+        <th><div class="progress-bar progress-bar bg-alert" role="progressbar" style="width: {% widthratio character.number_of_votes total_votes 100 %}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{% widthratio character.number_of_votes total_votes 100 %}%</div></th>
       </tr>
   </thead>
   </li>
