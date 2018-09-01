@@ -41,7 +41,7 @@
           <p>{{ character.description }}</p>
           <form method="POST" action="{% url 'characters:vote_character' character.id %}">
             {% csrf_token %}
-            <th><input class="btn btn-primary" type="submit" value="Äänestä"></th>
+            <th><input class="btn btn-success" type="submit" value="Äänestä"></th>
           </form>
       </div>
 
