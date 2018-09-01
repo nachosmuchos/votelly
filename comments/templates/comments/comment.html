@@ -24,6 +24,13 @@
   {% endfor %}
   </table>
 
+  <form method="POST" action="{% url 'comments:comment_character' character.id %}">
+    {% csrf_token %}
+    <th><input type="text" class="form-control" id="formGroupExampleInput" placeholder="Comment" name="comment_text"></th>
+    <th><input class="btn btn-primary" type="submit" value="Vote"></th>
+  </form>
+
+
 <div class="card card-outline-secondary my-4">
   <div class="card-header">
     Kommentit

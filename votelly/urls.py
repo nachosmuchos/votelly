@@ -25,6 +25,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('disclaimer/', views.disclaimer, name='disclaimer'),
     url(r'^program/(?P<fk>[0-9]+)/$', views.program_characters, name="program_characters"),
-    path('comments/', include('comments.urls')),
     path('characters/', include('characters.urls')),
+    path('characters/comments', include('comments.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
