@@ -5,5 +5,5 @@ from . import views
 app_name = 'comments'
 
 urlpatterns = [
-    path('show/', views.show_comments, name='show_comments'),
+    url(r'^/(?P<pk>[0-9]+)/comment', views.comment_character, name="comment_character"),
 ]

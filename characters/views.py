@@ -1,9 +1,7 @@
 from django.shortcuts import render
 from characters.models import Character
 from comments.models import Comment
-from django.utils import timezone
 from programs.models import Program
-from ago import human
 
 def character_comments(request, fk):
     comments = Comment.objects.filter(related_character_id = fk).order_by('-comment_time')[0:20]
@@ -15,7 +13,7 @@ def character_comments(request, fk):
     context_dictionary = {'comments':comments, 'program':program, 'character':character, 'characters':characters, 'total_votes':total_votes}
     return render(request, template_path, context_dictionary)
 
-def post_comment(request, fk):
+def vote_character(request, fk):
      if request.method == 'POST':
 #         comment = Comment()
          character = Character.objects.get(pk=fk)
