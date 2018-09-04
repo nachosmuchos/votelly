@@ -19,13 +19,13 @@ def vote_character(request, fk):
          character = Character.objects.get(pk=fk)
          characters = Character.objects.filter(related_program = character.related_program).order_by('-number_of_votes')
          program = character.related_program
-         total_votes = total_character_votes(characters)
 #         comment.comment_text = request.POST['comment_text']
 #         comment.comment_time = timezone.datetime.now()
 #         comment.related_character = character
 #         comment.save()
          character.number_of_votes += 1
          character.save()
+         total_votes = total_character_votes(characters)
          comments = Comment.objects.filter(related_character_id = fk).order_by('-comment_time')[0:20]
          template_path = 'comments/comment.html'
          context_dictionary = {'comments':comments, 'program':program, 'character':character, 'characters':characters, 'total_votes':total_votes}
