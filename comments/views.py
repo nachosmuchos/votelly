@@ -12,7 +12,7 @@ def comment_character(request, pk):
          character = Character.objects.get(pk=pk)
          characters = Character.objects.filter(related_program = character.related_program).order_by('-number_of_votes')
          program = character.related_program
-         total_votes = total_character_votes(characters)
+         total_votes = max_votes(characters)
          comment.comment_text = request.POST['comment_text']
          comment.comment_time = timezone.datetime.now()
          comment.related_character = character
@@ -24,8 +24,9 @@ def comment_character(request, pk):
          context_dictionary = {'comments':comments, 'program':program, 'characters':characters, 'total_votes':total_votes}
          return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-def total_character_votes(chars):
-    total = 0
+def max_votes(chars):
+    max_votes = 0
     for character in chars:
-        total = total + character.number_of_votes
-    return(total)
+        if character.number_of_votes > max_votes:
+            max_votes = character.number_of_votes
+    return(max_votes)
