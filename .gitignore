@@ -4,3 +4,6 @@
 .DS_Store
 votellyenv
 /media
+votelly/wsgi.py
+manage.py
+votelly/settings/development.py
