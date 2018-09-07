@@ -7,3 +7,6 @@ votellyenv
 votelly/wsgi.py
 manage.py
 votelly/settings/development.py
+votelly/settings/macbook.py
+votelly/media/
+
