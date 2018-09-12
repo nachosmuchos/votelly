@@ -13,7 +13,7 @@
         {% for program in programs.all %}
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="{% url 'program_characters' program.id %}"><img class="card-img-top" src="{{ program.image.url }}" alt="program picture"></a>
+            <a href="{% url 'program_characters' program.id %}"><img class="card-img-top" src="{{ program.image.url }}" alt="{{ program.image_alt_text }}" title="{{ program.image_alt_text }}"></a>
             <div class="card-body">
               <h4 class="card-title">
                 <a href="{% url 'program_characters' program.id %}">{{ program.name }}</a>
