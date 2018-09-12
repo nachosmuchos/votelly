@@ -4,6 +4,7 @@
 <div class="container">
 
 <h1 class="my-4"><a href="{% url 'program_characters' program.id %}">{{ program.name }}</a></h1>
+<p>{{ program.vote_question }}</p>
 
   <table class="table table-hover">
     <thead>
@@ -24,8 +25,7 @@
   {% endfor %}
   </table>
 
-
-
+<h2>{{ character.name }}</h2>
 
 <div class="card card-outline-secondary my-4">
   <div class="card-header">
