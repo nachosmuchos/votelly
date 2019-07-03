@@ -7,6 +7,7 @@ class Program(models.Model):
     image = models.ImageField(upload_to='media/')
     image_alt_text = models.CharField(max_length=200)
     vote_question = models.TextField(default='Desctiption')
+    created_at = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
         return self.name[:100]

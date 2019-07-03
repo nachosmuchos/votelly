@@ -4,7 +4,7 @@ from characters.models import Character
 
 # Create your views here.
 def home(request):
-    programs = Program.objects
+    programs = Program.objects.order_by('-created_at')
     return render(request, 'programs/home.html', {'programs':programs})
 
 def program_characters(request, fk):
