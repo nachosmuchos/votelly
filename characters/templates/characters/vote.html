@@ -8,26 +8,6 @@
   <h1 class="my-4">{{ program.first.name }}</h1>
   <p>{{ program.first.vote_question }}</p>
 
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Nimi</th>
-        <th scope="col">Ääniä yhteensä</th>
-      </tr>
-     </thead>
-
-  {% for character in characters.all %}
-  <tbody>
-      <tr>
-        <th><a href="{% url 'characters:character_comments' character.id %}">{{ character.name }}</th></a>
-        <th><div class="progress-bar progress-bar bg-danger" role="progressbar" style="width: {% widthratio character.number_of_votes max_votes 100 %}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{% widthratio character.number_of_votes total_votes 100 %}%</div></th>
-      </tr>
-  </thead>
-  </li>
-  {% endfor %}
-  </table>
-
-
   <!-- Team Members Row -->
   <div class="row">
     <div class="col-lg-12">
@@ -49,6 +29,27 @@
     {% endfor %}
 
   </div>
+
+  <!-- Vote results table -->
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Nimi</th>
+        <th scope="col">Ääniä yhteensä</th>
+      </tr>
+     </thead>
+
+  {% for character in characters.all %}
+  <tbody>
+      <tr>
+        <th><a href="{% url 'characters:character_comments' character.id %}">{{ character.name }}</th></a>
+        <th><div class="progress-bar progress-bar bg-danger" role="progressbar" style="width: {% widthratio character.number_of_votes max_votes 100 %}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{% widthratio character.number_of_votes total_votes 100 %}%</div></th>
+      </tr>
+  </thead>
+  </li>
+  {% endfor %}
+  </table>
 
 </div>
 <!-- /.container -->
