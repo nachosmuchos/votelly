@@ -27,4 +27,6 @@ urlpatterns = [
     url(r'^program/(?P<fk>[0-9]+)/$', views.program_characters, name="program_characters"),
     path('characters/', include('characters.urls')),
     path('characters/comments', include('comments.urls')),
+    # REST url
+    url(r'^api/programs/$', views.program_list),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

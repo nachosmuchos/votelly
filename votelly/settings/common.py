@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'programs',
     'characters',
     'comments',
+    'rest_framework',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
