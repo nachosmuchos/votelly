@@ -2,52 +2,52 @@
 {% block content %}
 
 <div class="container">
-
-<h1 class="my-4"><a href="{% url 'program_characters' program.id %}">{{ program.name }}</a></h1>
-<p>{{ program.vote_question }}</p>
-
+  <h1 class="my-4">
+    <a href="{% url 'program_characters' program.id %}">{{ program.name }}
+    </a>
+  </h1>
+  
+  <p>{{ program.vote_question }}</p>
   <table class="table table-hover">
     <thead>
       <tr>
         <th scope="col">Nimi</th>
         <th scope="col">Ääniä yhteensä</th>
       </tr>
-     </thead>
-
-  {% for character in characters.all %}
-  <tbody>
+    </thead>
+    
+    {% for character in characters.all %}
+    <tbody>
       <tr>
         <th><a href="{% url 'characters:character_comments' character.id %}">{{ character.name }}</th></a>
         <th><div class="progress-bar progress-bar bg-danger" role="progressbar" style="width: {% widthratio character.number_of_votes max_votes 100 %}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{% widthratio character.number_of_votes total_votes 100 %}%</div></th>
       </tr>
-  </thead>
-  </li>
-  {% endfor %}
+    </thead>
+    {% endfor %}
+  
   </table>
-
-<h2>{{ character.name }}</h2>
-
-<div class="card card-outline-secondary my-4">
-  <div class="card-header">
-    <form method="POST" action="{% url 'comments:comment_character' character.id %}">
-      {% csrf_token %}
-      <div class="row">
+  
+  <h2>{{ character.name }}</h2>
+  <div class="card card-outline-secondary my-4">
+    <div class="card-header">
+      <form method="POST" action="{% url 'comments:comment_character' character.id %}">
+        {% csrf_token %}
+        <div class="row">
           <div class="col-sm-7"><input type="text" class="form-control" id="formGroupExampleInput" placeholder="Kommentti" name="comment_text"></div>
           <div class=col-sm><input class="btn btn-success" type="submit" value="Kommentoi"></div>
-      </div>
-    </form>
+        </div>
+      </form>
+    </div>
+    
+    <div class="card-body">
+      {% for comment in comments.all %}
+      <p>{{ comment.comment_text }}</p>
+      <small class="text-muted">{{ comment.comment_time }}</small>
+      <hr>
+      {% endfor %}
+    </div>
+    
   </div>
-<div class="card-body">
-
-{% for comment in comments.all %}
-
-  <p>{{ comment.comment_text }}</p>
-  <small class="text-muted">{{ comment.comment_time }}</small>
-  <hr>
-
-{% endfor %}
-</div>
-</div>
 </div>
 
 {% endblock %}

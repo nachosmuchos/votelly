@@ -56,6 +56,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'votelly.urls'
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    # other context processors....
+    'django.core.context_processors.static',
+    # other context processors....
+)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
