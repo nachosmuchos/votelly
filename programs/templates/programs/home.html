@@ -1,32 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <!-- Page Content -->
-    <div class="container">
+<div class="container">
 
-      <!-- Page Heading -->
-      <h1 class="my-4">
-        <small>Äänestä ja kommentoi television suosikkihahmojasi</small>
-      </h1>
+  <h1 class="heading-primary">
+    Äänestä ja kommentoi television suosikkihahmojasi
+  </h1>
+  
+  <div class="program-summaries">
+    {% for program in programs.all %}
+    <a href="{% url 'program_characters' program.id %}">
+      <img class="program-image" src="{{ program.image.url }}" alt="{{ program.image_alt_text }}" title="{{ program.image_alt_text }}">
+    </a>
+    <a href="{% url 'program_characters' program.id %}">{{ program.name }}</a>
+    <p class="program-description">{{ program.description }}</p>
+    {% endfor %}
+  </div>
 
-      <div class="row">
-        {% for program in programs.all %}
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="{% url 'program_characters' program.id %}"><img class="card-img-top" src="{{ program.image.url }}" alt="{{ program.image_alt_text }}" title="{{ program.image_alt_text }}"></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="{% url 'program_characters' program.id %}">{{ program.name }}</a>
-              </h4>
-              <p class="card-text">{{ program.description }}</p>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-
-      </div>
-      <!-- /.row -->
-
-    </div>
-    <!-- /.container -->
+</div>
 {% endblock %}

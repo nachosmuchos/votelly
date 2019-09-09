@@ -5,6 +5,11 @@ from .common import *
 
 DEBUG = True
 
+STATIC_ROOT = '/Users/markus/Workspace/votelly/'
 STATIC_URL = '/static/'
 MEDIA_URL = '/pics/'
 MEDIA_ROOT = BASE_DIR
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'statics'),
+]

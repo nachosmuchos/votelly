@@ -9,3 +9,5 @@ manage.py
 votelly/settings/macbook.py
 votelly/media/
 .vscode/
+admin
+rest_framework
