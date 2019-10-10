@@ -3,6 +3,41 @@ from characters.models import Character
 from comments.models import Comment
 from programs.models import Program
 
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from rest_framework import status
+from rest_framework.decorators import api_view
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .serializers import *
+
+# Add POST if add is applied
+@api_view(['GET'])
+def character_list(request):
+    if request.method == 'GET':
+        data = []
+        nextPage = 1
+        previousPage = 1
+        characters = Character.objects.all()
+        page = request.GET.get('page', 1)
+        paginator = Paginator(characters, 10)
+        try:
+            data = paginator.page(page)
+        except PageNotAnInteger:
+            data = paginator.page(1)
+        except EmptyPage:
+            data = paginator.page(paginator.num_pages)
+        
+        serializer = CharacterSerializer(data,context={'request': request} ,many=True)
+        if data.has_next():
+            nextPage = data.next_page_number()
+        if data.has_previous():
+            previousPage = data.previous_page_number()
+        
+        return Response({'data': serializer.data , 'count': paginator.count, 
+        'numpages' : paginator.num_pages, 'nextlink': '/api/characters/?page=' + str(nextPage), 
+        'prevlink': '/api/characters/?page=' + str(previousPage)})
+
+
 def character_comments(request, fk):
     comments = Comment.objects.filter(related_character_id = fk).order_by('-comment_time')[0:20]
     character = Character.objects.filter(id=fk).first()

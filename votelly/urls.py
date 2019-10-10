@@ -15,18 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from programs import views
+from programs import views as program_views
+from characters import views as character_views
 from django.conf.urls import url
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
-    path('disclaimer/', views.disclaimer, name='disclaimer'),
-    url(r'^program/(?P<fk>[0-9]+)/$', views.program_characters, name="program_characters"),
+    path('', program_views.home, name='home'),
+    path('disclaimer/', program_views.disclaimer, name='disclaimer'),
+    url(r'^program/(?P<fk>[0-9]+)/$', program_views.program_characters, name="program_characters"),
     path('characters/', include('characters.urls')),
     path('characters/comments', include('comments.urls')),
     # REST url
-    url(r'^api/programs/$', views.program_list),
+    url(r'^api/programs/$', program_views.program_list),
+    url(r'^api/characters/$', character_views.character_list),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
