@@ -1,5 +1,6 @@
-djangorestframework
-django-cors-headers
-pillow
-psycopg2-binary
-postgres
+django>=0.1
+djangorestframework>=0.1
+django-cors-headers>=0.1
+pillow>=0.1
+psycopg2-binary>=0.1
+postgres>=0.1
