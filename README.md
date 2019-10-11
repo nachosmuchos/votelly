@@ -5,9 +5,14 @@ Votelly is a template to create and admin any kind of polls. Votelly provides po
 characters in Django admin.
 
 ## Installation
-1. Install requirements: djangorestframework, django-cors-headers, pillow, psycopg2-binary, postgres
-2. Setup DB
-3. Make migrations and migrate
+1. Clone the project
+2. Create new virtual environment for the project: [`virtualenv your_env`]
+3. Install requirements from [`requirements.txt`] by [`pip install -r requirements.txt`]
+4. Install your preferred database like Postgres
+5. Setup your local project settings to [`votelly/settings/development.py`]
+6. Check that [`manage.py`] contains right environment settings
+7. [`python manage.py makemigrations`] and [`python manage.py migrate`]
+8. [`python manage.py runserver`] in your development environment
 
 ## Example
 www.votelly.com
