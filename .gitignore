@@ -4,7 +4,6 @@
 .DS_Store
 votellyenv
 /media
-votelly/wsgi.py
 votelly/settings/macbook.py
 votelly/media/
 .vscode/
