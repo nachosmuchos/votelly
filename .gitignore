@@ -5,7 +5,6 @@
 votellyenv
 /media
 votelly/wsgi.py
-manage.py
 votelly/settings/macbook.py
 votelly/media/
 .vscode/
