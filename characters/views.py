@@ -37,6 +37,20 @@ def character_list(request):
         'numpages' : paginator.num_pages, 'nextlink': '/api/characters/?page=' + str(nextPage), 
         'prevlink': '/api/characters/?page=' + str(previousPage)})
 
+@api_view(['PUT'])
+def character_detail(request, pk):
+    try:
+        characters = Character.objects.get(pk=pk)
+    except Character.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'PUT':
+        serializer = CharacterSerializer(characters, data=request.data,context={'request': request})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 def character_comments(request, fk):
     comments = Comment.objects.filter(related_character_id = fk).order_by('-comment_time')[0:20]

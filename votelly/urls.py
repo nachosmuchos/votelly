@@ -31,4 +31,5 @@ urlpatterns = [
     # REST url
     url(r'^api/programs/$', program_views.program_list),
     url(r'^api/characters/$', character_views.character_list),
+    url(r'^api/characters/(?P<pk>[0-9]+)$', character_views.character_detail),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
