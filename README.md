@@ -12,6 +12,7 @@ characters in Django admin.
 5. Setup your local project settings to `votelly/settings/development.py`
 6. Check that `manage.py` contains right environment settings
 7. `python manage.py makemigrations` and `python manage.py migrate`
+8. Create admin user for Django admin `python manage createsuperuser`
 8. `python manage.py runserver` in your development environment
 
 ## Example
