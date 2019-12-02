@@ -17,3 +17,5 @@ characters in Django admin.
 
 ## Example
 www.votelly.com
+
+![Example](example.png)
